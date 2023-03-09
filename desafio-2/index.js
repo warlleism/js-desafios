@@ -10,18 +10,12 @@ function showInput() {
 }
 
 const tarefasFazer = [
-    { id: 1, tarefa: 'teste' }
-
 ]
 
 const tarefasFazendo = [
-    { id: 1, tarefa: 'teste' }
-
 ]
 
 const tarefasFeitas = [
-    { id: 1, tarefa: 'teste' }
-
 ]
 
 const containerCards = document.querySelectorAll('.container-cards')
@@ -31,7 +25,7 @@ const feito = document.getElementById('feito')
 
 const novaTarefa = document.createElement('div')
 novaTarefa.setAttribute('class', 'nova-tarefa')
-novaTarefa.innerHTML = '+ ADICIONAR OUTRO CARD'
+novaTarefa.innerHTML = '+ CRIAR NOVO ITEM'
 
 //criando copias da div de cração
 const nova1 = novaTarefa.cloneNode(true)
