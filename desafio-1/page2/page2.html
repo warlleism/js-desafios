@@ -5,23 +5,26 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=], initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
-<body>
-    <div id="content">
-        teste
-    </div>
-</body>
+<div id="content">
+</div>
+
+<div class="retornar" onclick="back()">retornar</div>
 
 <script>
 
     const content = document.getElementById('content');
     const teste = localStorage.getItem('itens');
     const meuArray = JSON.parse(teste);
-    content.innerHTML = '<h4>' + meuArray.title + '</h4><p>' + meuArray.description + '</p>';
+    content.innerHTML = `<img src="${meuArray.urlToImage}"></img> <div class="teste"><h4>${meuArray.author}</h4><p>${meuArray.description}</p></div>`;
 
 
+    const back = () => {
+        window.location.href = "../page1/index.html";
+    }
 
 </script>
 

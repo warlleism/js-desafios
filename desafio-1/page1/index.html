@@ -21,12 +21,12 @@
             data.articles.map(post => {
                 let postDiv = document.createElement("div");
                 postDiv.setAttribute("id", "card-info")
-                postDiv.innerHTML = `<img src="${post.urlToImage}"> </img><h4>${post.author.slice(0, 100)}</h4><p>${post.content.slice(0, 200)}</p>`;
+                postDiv.innerHTML = `<img src="${post.urlToImage}"></img><h4>${post.author}</h4><p>${post.content.slice(0, 200)}</p>`;
                 document.body.appendChild(postDiv);
 
                 postDiv.addEventListener("click", function () {
                     localStorage.setItem('itens', JSON.stringify(post))
-                    window.location.href = "page1.html";
+                    window.location.href = "../page2/page2.html";
                 });
             });
         })
