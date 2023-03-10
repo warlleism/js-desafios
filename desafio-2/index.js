@@ -1,22 +1,13 @@
 
 function hiddenInput() {
-    const input = document.getElementById('inputContent')
-    input.style.display = 'none'
+  const input = document.getElementById('inputContent')
+  input.style.display = 'none'
 }
 
 function showInput() {
-    const input = document.getElementById('inputContent')
-    input.style.display = 'flex'
+  const input = document.getElementById('inputContent')
+  input.style.display = 'flex'
 }
-
-const tarefasFazer = [
-]
-
-const tarefasFazendo = [
-]
-
-const tarefasFeitas = [
-]
 
 const containerCards = document.querySelectorAll('.container-cards')
 const fazer = document.getElementById('fazer')
@@ -41,118 +32,105 @@ let identificador = 0
 
 //chamando a criação de nova tarefa
 nova1.addEventListener('click', () => {
-    showInput()
-    identificador = 1
+  showInput()
+  identificador = 1
 })
 
 nova2.addEventListener('click', () => {
-    showInput()
-    identificador = 2
+  showInput()
+  identificador = 2
 })
 
 nova3.addEventListener('click', () => {
-    showInput()
-    identificador = 3
+  showInput()
+  identificador = 3
 })
 
+//arrays para tarefas
+const tarefasFazer = []
+const tarefasFazendo = []
+const tarefasFeitas = []
 
-tarefasFazer.map((e) => {
-    const divFazer = document.createElement('div')
-    divFazer.setAttribute('id', 'container-tarefa')
-    divFazer.innerHTML = e.tarefa
-    fazer.appendChild(divFazer)
-})
+//função responsavel por criar uma nova tarefa
+function addTarefa() {
+  const input = document.getElementById('input')
+  var valorInput = input.value;
 
-tarefasFazendo.map((e) => {
-    const divFazendo = document.createElement('div')
-    divFazendo.setAttribute('id', 'container-tarefa')
-    divFazendo.innerHTML = e.tarefa
-    fazendo.appendChild(divFazendo)
-})
+  if (identificador == 1) {
+    tarefasFazer.push({ id: tarefasFazer.length + 1, tarefa: valorInput })
+    fazer.innerHTML = "";
+    for (var i = 0; i < tarefasFazer.length; i++) {
+      var objetoAtual = tarefasFazer[i];
+      var novoItem = document.createElement("div");
+      novoItem.setAttribute('id', 'container-tarefa')
+      novoItem.innerHTML = objetoAtual.tarefa;
+      fazer.appendChild(novoItem);
+      fazer.appendChild(nova1)
+    }
+    hiddenInput()
+  } else if (identificador == 2) {
+    tarefasFazendo.push({ id: tarefasFazendo.length + 1, tarefa: valorInput })
+    fazendo.innerHTML = "";
+    for (var i = 0; i < tarefasFazendo.length; i++) {
+      var objetoAtual = tarefasFazendo[i];
+      var novoItem = document.createElement("div");
+      novoItem.setAttribute('id', 'container-tarefa')
+      novoItem.innerHTML = objetoAtual.tarefa;
+      fazendo.appendChild(novoItem);
+      fazendo.appendChild(nova2)
+    }
+    hiddenInput()
+  } else if (identificador == 3) {
+    tarefasFeitas.push({ id: tarefasFeitas.length + 1, tarefa: valorInput })
+    feito.innerHTML = "";
+    for (var i = 0; i < tarefasFeitas.length; i++) {
+      var objetoAtual = tarefasFeitas[i];
+      var novoItem = document.createElement("div");
+      novoItem.setAttribute('id', 'container-tarefa')
+      novoItem.innerHTML = objetoAtual.tarefa;
+      feito.appendChild(novoItem);
+      feito.appendChild(nova3)
+    }
+    hiddenInput()
 
-tarefasFeitas.map((e) => {
-    const divFeito = document.createElement('div')
-    divFeito.setAttribute('id', 'container-tarefa')
-    divFeito.innerHTML = e.tarefa
-    feito.appendChild(divFeito)
-})
+  }
 
-
-//logicas de criação de novas tarefas
-function addTarefaFazer(event) {
-    tarefasFazer.push({ id: tarefasFazer.length + 1, tarefa: event.target.value })
-}
-
-function addTarefaFazendo(event) {
-    tarefasFazendo.push({ id: tarefasFazendo.length + 1, tarefa: event.target.value })
-}
-
-function addTarefaFeitas(event) {
-    tarefasFeitas.push({ id: tarefasFeitas.length + 1, tarefa: event.target.value })
+  input.value = ''
 }
 
 //logicas de alteração da posição de tarefas
 function ReposicionarTarefaFazer(item) {
-    const objetoParaMover = tarefasFazer.splice(item, item)[0];
-    tarefasFazer.unshift(objetoParaMover);
+  const objetoParaMover = tarefasFazer.splice(item, item)[0];
+  tarefasFazer.unshift(objetoParaMover);
 }
 
 function ReposicionarTarefaFazendo(item) {
-    const objetoParaMover = tarefasFazendo.splice(item, item)[0];
-    tarefasFazendo.unshift(objetoParaMover);
+  const objetoParaMover = tarefasFazendo.splice(item, item)[0];
+  tarefasFazendo.unshift(objetoParaMover);
 }
 
 function ReposicionarTarefaFeita(item) {
-    const objetoParaMover = tarefasFeitas.splice(item, item)[0];
-    tarefasFeitas.unshift(objetoParaMover);
+  const objetoParaMover = tarefasFeitas.splice(item, item)[0];
+  tarefasFeitas.unshift(objetoParaMover);
 }
 
+// const meuArray = [
+//   { id: 1, nome: 'Objeto 1' },
+//   { id: 2, nome: 'Objeto 2' },
+//   { id: 3, nome: 'Objeto 3' },
+//   { id: 4, nome: 'Objeto 4' },
+//   { id: 5, nome: 'Objeto 5' },
+//   { id: 6, nome: 'Objeto 6' }
+// ];
 
-function addTarefa() {
-    const input = document.getElementById('input')
-    var valorInput = input.value;
-
-    if (identificador == 1) {
-        tarefasFazer.push({ id: tarefasFazer.length + 1, tarefa: valorInput })
-        fazer.innerHTML = "";
-        for (var i = 0; i < tarefasFazer.length; i++) {
-            var objetoAtual = tarefasFazer[i];
-            var novoItem = document.createElement("div");
-            novoItem.setAttribute('id', 'container-tarefa')
-            novoItem.innerHTML = objetoAtual.tarefa;
-            fazer.appendChild(novoItem);
-            fazer.appendChild(nova1)
-        }
-        hiddenInput()
-
-    } else if (identificador == 2) {
-        tarefasFazendo.push({ id: tarefasFazendo.length + 1, tarefa: valorInput })
-        fazendo.innerHTML = "";
-        for (var i = 0; i < tarefasFazendo.length; i++) {
-            var objetoAtual = tarefasFazendo[i];
-            var novoItem = document.createElement("div");
-            novoItem.setAttribute('id', 'container-tarefa')
-            novoItem.innerHTML = objetoAtual.tarefa;
-            fazendo.appendChild(novoItem);
-            fazendo.appendChild(nova2)
-        }
-        hiddenInput()
-    } else if (identificador == 3) {
-        tarefasFeitas.push({ id: tarefasFeitas.length + 1, tarefa: valorInput })
-        feito.innerHTML = "";
-        for (var i = 0; i < tarefasFeitas.length; i++) {
-            var objetoAtual = tarefasFeitas[i];
-            var novoItem = document.createElement("div");
-            novoItem.setAttribute('id', 'container-tarefa')
-            novoItem.innerHTML = objetoAtual.tarefa;
-            feito.appendChild(novoItem);
-            feito.appendChild(nova3)
-        }
-        hiddenInput()
-
-    }
-
-    input.value = ''
-}
+//função responsavel por excluir uma tarefa
+// function excluirTarefa(array, param) {
+//   const filter = array.filter(e => e.id != param)
+//   meuArray;
+//   meuArray.push(filter)
+//   console.log(filter)
+// }
 
 
+
+// excluirTarefa(meuArray, 2)
